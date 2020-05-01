@@ -1,4 +1,4 @@
-import io
+import os
 
 import requests
 
@@ -10,8 +10,8 @@ async def is_valid(state_update: StateUpdate, batch_id: int) -> bool:
     A hook for third parties to validate the state_update before signing the new root.
     """
 
-    # Using io.environ instead of getenv to throw an error if the env var is not set
-    url = io.environ['BATCH_VALIDATION_URL']
+    # Using os.environ instead of getenv to throw an error if the env var is not set
+    url = os.environ['BATCH_VALIDATION_URL']
 
     # We only need vaults which contain balances for all vaults which are
     # affected by the batch.
