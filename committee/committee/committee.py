@@ -199,7 +199,8 @@ async def main():
     if certificates_path is not None:
         requests_kwargs = {'cert': (os.path.join(certificates_path, 'user.crt'),
                                     os.path.join(certificates_path, 'user.key')),
-                           'verify': os.path.join(certificates_path, 'server.crt')}
+                           'verify': False # os.path.join(certificates_path, 'server.crt')
+                           }
 
     availability_gateway = AvailabilityGatewayClient(
         availability_gw_endpoint, requests_kwargs=requests_kwargs)
