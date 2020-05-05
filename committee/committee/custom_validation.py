@@ -15,7 +15,7 @@ async def is_valid(state_update: StateUpdate, batch_id: int) -> bool:
 
     # We only need vaults which contain balances for all vaults which are
     # affected by the batch.
-    payload = { 'vaults': state_update.vaults, 'batchId': batch_id }
+    payload = { 'vaults': StateUpdate.Schema().dump(state_update)['vaults'], 'batchId': batch_id }
     response = requests.post(url, json = payload)
 
     if response.status_code == 200 or response.status_code == 204:
